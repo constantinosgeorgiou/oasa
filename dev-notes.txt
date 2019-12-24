@@ -1,0 +1,8 @@
+Github integration:
+https://devcenter.heroku.com/articles/github-integration#manual-deploys
+
+Heroku nodejs:
+https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true
+
+Deploy form CL:
+https://devcenter.heroku.com/articles/git
