@@ -28,6 +28,6 @@ app.set('view engine', 'ejs')
 app.use("/", indexRoutes)
 // app.use("/users", userRoutes)
 // app.use("/users/:id/orders", orderRoutes)
-// app.use("/route", routeRoutes)
+app.use("/routes", routeRoutes)
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))

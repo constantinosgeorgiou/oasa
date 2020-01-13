@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../partials/header.ejs %>
+</head>
+
+<body>
+
+    <% include ../../partials/nav.ejs %>
+
+    <h1>Routes</h1>
+    <% routes.forEach((route) => { %>
+    <p>
+        <a href="/routes/<%= route.route_name %>">
+        <%= route.route_name %>, <%= route.start_point %>, <%= route.end_point %>
+        </a>
+    </p>
+
+    <% }) %>
+
+</body>
+
+</html>
