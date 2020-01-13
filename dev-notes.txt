@@ -29,8 +29,19 @@ Installation & Setup:
 https://r00t4bl3.com/post/how-to-install-postgresql-12-on-linux-mint-19-tara-19-1-tessa-19-2-tina-19-3-tricia
 
 
+
+
 COMMANDS
 ========
+
+Log into the Heroku PostgreSQL instance:
+heroku pg:psql postgresql-solid-93707 --app oasa
+
+create your table and entries on Heroku Postgres:
+cat migrations/init.sql | heroku pg:psql postgresql-solid-93707 --app oasa
+
+Test and deploy:
+heroku local web
 
 Log in to root user:
 sudo -u postgres psql
