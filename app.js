@@ -3,9 +3,6 @@ const bodyParser = require("body-parser")
 const path = require('path')
 const cors = require('cors')
 const dotenv = require('dotenv')
-const {
-    pool
-} = require('./migrations/config')
 const PORT = process.env.PORT || 5000
 const app = express()
 
@@ -26,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.use("/", indexRoutes)
-// app.use("/users", userRoutes)
+app.use("/users", userRoutes)
 // app.use("/users/:id/orders", orderRoutes)
 app.use("/routes", routeRoutes)
 
