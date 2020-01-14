@@ -20,6 +20,9 @@ https://www.taniarascia.com/making-api-requests-postman-curl/
 Project baseline:
 https://www.taniarascia.com/node-express-postgresql-heroku/
 
+Log in / sign up:
+https://medium.com/@timtamimi/getting-started-with-authentication-in-node-js-with-passport-and-postgresql-2219664b568c
+
 
 o----------o
 :POSTGRESQL:
