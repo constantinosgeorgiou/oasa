@@ -9,41 +9,55 @@
 
     <% include ../../partials/nav.ejs %>
     <% include ../../partials/alerts.ejs %>
-
-
-    <h1 style="text-align: center"><%= route.route_name %>, <%= route.start_point %>, <%= route.end_point %></h1>
-    <div class="container">
-        <div class="row align-items-start">
-            <div class="col-8">
-                <form action="/register" method="post">
-                    <div class="form-group">
-                        Χάρτης
+    <section class="search-banner text-white py-3  form-background" id="search-banner">
+        <div class="container py-5 my-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card background-color-form">
+                        <div class="card-body">
+                            <h1 style="text-align: center"><%= route.route_name %>, <%= route.start_point %>,
+                                <%= route.end_point %></h1>
+                            <div class="container">
+                                <div class="row align-items-start">
+                                    <div class="col-8">
+                                        <form action="/register" method="post">
+                                            <div class="form-group">
+                                                Χάρτης
+                                            </div>
+                                            <iframe src="<%= route.map %>" width="600" height="450" frameborder="0"
+                                                style="border:0;" allowfullscreen=""></iframe>
+                                        </form>
+                                    </div>
+                                    <div class="col-4">
+                                        <form action="/register" method="post">
+                                            <div class="form-group">
+                                                Στάσεις Δρομολογείου
+                                            </div>
+                                            <ul>
+                                                <li><%= route.start_point %></li>
+                                                <li>..</li>
+                                                <li>..</li>
+                                                <li>Ευαγγελισμός</li>
+                                                <li>..</li>
+                                                <li>Σύνταγμα</li>
+                                                <li>..</li>
+                                                <li>..</li>
+                                                <li><%= route.end_point %></li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d50307.85419397123!2d23.7200587067922!3d37.99484140815476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x14a197ee1d2361b3%3A0x5f8102efa34d2335!2zzp3Otc66z4HOv8-EzrHPhs61zq_OvywgWm9ncmFmb3U!3m2!1d37.972401399999995!2d23.7803185!4m5!1s0x14a1a2849e23b62d%3A0xa377ba069b113618!2zzpPOsc67zqzPhM-Dzrk!3m2!1d38.0188948!2d23.756022299999998!5e0!3m2!1sen!2sgr!4v1579112035264!5m2!1sen!2sgr"
-                        width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                </form>
-            </div>
-            <div class="col-4">
-                <form action="/register" method="post">
-                    <div class="form-group">
-                        Στάσεις Δρομολογείου
-                    </div>
-                    <ul>
-                        <li><%= route.start_point %></li>
-                        <li>..</li>
-                        <li>..</li>
-                        <li>Ευαγγελισμός</li>
-                        <li>..</li>
-                        <li>Σύνταγμα</li>
-                        <li>..</li>
-                        <li>..</li>
-                        <li><%= route.end_point %></li>
-                    </ul>
-                </form>
+                </div>
+
             </div>
         </div>
-    </div>
+        </div>
+    </section>
+
+
     <% include ../../partials/footer.ejs %>
 
 </body>

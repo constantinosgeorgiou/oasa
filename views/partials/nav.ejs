@@ -28,7 +28,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/routes">Ημερήσια</a>
           <a class="dropdown-item" href="/routes/24ora">24ωρά</a>
-          <a class="dropdown-item" href="/routes/Χ95">Αεροδρομίου</a>
+          <a class="dropdown-item" href="/routes/airport">Αεροδρομίου</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -72,6 +72,7 @@
     </ul>
 
     <ul class="nav">
+      <% if(loggedIn) console.log(loggedIn) %>
       <li class="nav-item">
         <button type="button" class="btn btn-outline-primary">
           <a href="/register">Εγγραφή <i class="fas fa-user-plus"></i></a>
@@ -83,4 +84,3 @@
       </li>
     </ul>
 </nav>
-

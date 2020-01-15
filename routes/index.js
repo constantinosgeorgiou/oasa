@@ -80,7 +80,6 @@ router.post('/login', (request, response) => {
         pool.query(query, [email, password], (error, result) => {
             if (result.rowCount > 0) {
                 request.session.loggedin = true
-                
                 let user = {
                     id: result.rows[0].id,
                     first_name: result.rows[0].first_name,
@@ -106,6 +105,7 @@ router.post('/login', (request, response) => {
 router.get("/logout", (request, response) => {
     request.session.user = {}
     request.session.loggedin = false
+    
     request.flash('success', 'Logged you out!')
     response.redirect("/")
 });
