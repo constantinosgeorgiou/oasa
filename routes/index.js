@@ -55,13 +55,6 @@ router.post('/register', async (request, response) => {
 router.get('/login', (request, response) => response.render('pages/login'))
 
 // handle log in logic
-// router.post('/login', passport.authenticate('local', {
-//     successRedirect: '/account',
-//     failureRedirect: '/login'
-// }), (request, response) => {
-//     console.log("in login post")
-//     response.redirect('/')
-// })
 router.post('/login', (request, response) => {
     const {
         email,
@@ -69,13 +62,12 @@ router.post('/login', (request, response) => {
     } = request.body
 
     const query = 'SELECT * FROM users WHERE email = $1 AND password = $2'
-    
+
     if (email && password) {
         pool.query(query, [email, password], (error, result) => {
-            // console.log(result)
-            // console.log("\nuser row[0]:", result.rows[0])
             if (result.rowCount > 0) {
                 request.session.loggedin = true
+                
                 let user = {
                     id: result.rows[0].id,
                     first_name: result.rows[0].first_name,
@@ -85,7 +77,6 @@ router.post('/login', (request, response) => {
                     email: result.rows[0].email
                 }
                 request.session.user = user
-                // console.log("session user:",request.session.user)
                 response.redirect('/account')
             } else {
                 // incorrect email / password
@@ -100,63 +91,10 @@ router.post('/login', (request, response) => {
 
 // Log out route
 router.get("/logout", (request, response) => {
-    // console.log(request.logout)
-    request.logout()
-    // console.log(request.isAuthenticated())
+    request.session.user = {}
+    request.session.loggedin = false
     request.flash('success', 'Logged you out!')
     response.redirect("/")
 });
-
-
-// passport.use('local', new LocalStrategy({
-//     passReqToCallback: true
-// }, (request, email, password, done) => {
-//     loginAttempt();
-//     async function loginAttempt() {
-//         // const {
-//         //     email
-//         // } = request.body
-
-//         const query = 'SELECT id, "first_name", "middle_name", "last_name" "email", "password" FROM "users" WHERE "email"=$1'
-
-//         pool.query(query, [email], (error, result) => {
-//             if (error) return (error)
-//             console.log("loginAttempt", result.rows[0])
-//             if (result.rows[0] == null) {
-//                 request.flash('danger', "Oops. Incorrect login details.");
-//                 return done(null, false);
-//             } else {
-//                 bcrypt.compare(password, result.rows[0].password, (error, check) => {
-//                     if (error) {
-//                         console.log('Error while checking password')
-//                         return done()
-//                     } else if (check) {
-//                         console.log(result.rows[0])
-//                         return done(null, [{
-//                             email: result.rows[0].email,
-//                             firstName: result.rows[0].firstName
-//                         }]);
-//                     } else {
-//                         request.flash('danger', "Oops. Incorrect login details.");
-//                         return done(null, false)
-//                     }
-//                 })
-//             }
-//         })
-//     }
-// }))
-
-// passport.serializeUser(function (user, done) {
-//     console.log(user)
-//     done(null, user);
-// });
-
-// passport.deserializeUser(function (user, done) {
-//     console.log(user)
-
-//     done(null, user);
-// });
-
-
 
 module.exports = router

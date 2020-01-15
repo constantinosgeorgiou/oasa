@@ -29,7 +29,6 @@ app.use(session({
 }))
 
 app.use((request, response, next) => {
-    response.locals.currentUser = request.user;
     response.locals.warning = request.flash("warning")
     response.locals.danger = request.flash("danger")
     response.locals.success = request.flash("success")
