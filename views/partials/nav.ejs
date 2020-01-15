@@ -1,25 +1,108 @@
+<nav class="navbar navbar-light bg-light">
+  <a href="#">
+    <img src="/oasalogo.png" alt="" width="70" height="70">
+  </a>
+  <div>
+    <ul class="mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-0" type="search" size="8" placeholder="Αναζήτηση" aria-label="Search">
+      <button class="form-control-sm btn btn-outline-info my-2 my-sm-0" type="submit"><i
+          class="fas fa-search"></i></button>
+    </form>
+  </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <ul class="navbar-nav"></ul>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Μετακίνηση
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/routes">Ημερήσια</a>
+          <a class="dropdown-item" href="#">24ωρά</a>
+          <a class="dropdown-item" href="#">Αεροδρομίου</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Εισιτήρια
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Αγορά</a>
+          <a class="dropdown-item" href="#">Εκδοτήρια</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Προσβασιμότητα
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Οδηγίες για ΑμεΑ</a>
+          <a class="dropdown-item" href="#">Στάσεις με προεξοχές</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Εταιρικό Προφίλ
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Ιστορία</a>
+          <a class="dropdown-item" href="#">Για Επιχειρηματίες</a>
+          <a class="dropdown-item" href="#">Προκυρήξεις</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Επικοινωνία<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="#">Βοήθεια<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-primary" href="#">Εγγραφή <i class="fas fa-user-plus"></i>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-primary" href="#">Είσοδος <i class="fas fa-user"></i>
+        </button>
+      </li>
+    </ul>
+</nav>
 <div class="container">
   <% if (messages) { %>
-    <% if (messages.warning) { %>
-      <% if (messages.warning.length) { %>
-        <div class="alert alert-warning" role="alert">
-          <%= messages.warning %>
-        </div>
-      <% } %>
-    <% } %>
-    <% if (messages.danger) { %>
-      <% if (messages.danger.length) { %>
-        <div class="alert alert-danger" role="alert">
-          <%= messages.danger %>
-        </div>
-      <% } %>
-    <% } %>
-    <% if (messages.success) { %>
-      <% if (messages.success.length) { %>
-        <div class="alert alert-success" role="alert">
-          <%= messages.success %>
-        </div>
-      <% } %>
-    <% } %>
+  <% if (messages.warning) { %>
+  <% if (messages.warning.length) { %>
+  <div class="alert alert-warning" role="alert">
+    <%= messages.warning %>
+  </div>
+  <% } %>
+  <% } %>
+  <% if (messages.danger) { %>
+  <% if (messages.danger.length) { %>
+  <div class="alert alert-danger" role="alert">
+    <%= messages.danger %>
+  </div>
+  <% } %>
+  <% } %>
+  <% if (messages.success) { %>
+  <% if (messages.success.length) { %>
+  <div class="alert alert-success" role="alert">
+    <%= messages.success %>
+  </div>
+  <% } %>
+  <% } %>
   <% } %>
 </div>

@@ -6,48 +6,111 @@
 </head>
 
 <body>
-  <!-- <% include ../partials/nav.ejs %> -->
+  <% include ../partials/nav.ejs %>
 
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-        <div class="col-md-12 bg-info">
-          <div class="row">
-            <div class="col-md-4 outline">
-              <!-- Plan route -->
-              col
-            </div>
-            <div class="col-md-4 outline">
-              <!-- Find route -->
-              col
-            </div>
-            <div class="col-md-4 outline">
-              <!-- Find stop -->
-              col
-            </div>
+        <!-- <div class="col-md-12 bg-info"> -->
+        <div class="row">
+          <div class="col-md-4 search_boxes outline">
+            <!-- Plan route -->
+            <h4 style="text-align: center">Βρες διαδρομή</h4>
+
+            <form action="/" method="post">
+              <div class="form-group">
+                <label for="input_from">Από:</label>
+                <input type="text" class="form-control" id="input_from" name="from" placeholder="ΑΠΟ:">
+              </div>
+              <div class="form-group">
+                <label for="input_to">Προς:</label>
+                <input type="text" class="form-control" id="input_to" name="to" placeholder="ΠΡΟΣ:">
+              </div>
+              <button type="submit" class="btn btn-primary">ΑΝΑΖΗΤΗΣΗ</button>
+            </form>
           </div>
-          <!-- 3 icons -->
-          <div class="row">
-            <div class="col-4 outline">col</div>
-            <div class="col-4 outline">col</div>
-            <div class="col-4 outline">col</div>
+          <div class="col-md-4 search_boxes outline">
+            <!-- Find route -->
+            <h4 style="text-align: center">Βρες την γραμμή σου</h4>
+
+            <form action="/" method="post">
+              <div class="form-group">
+                <label for="input_route">Επέλεξε γραμμή:</label>
+                <input type="text" class="form-control" id="input_route" name="search_route"
+                  placeholder="ΕΠΕΛΕΞΕ ΓΡΑΜΜΗ:">
+              </div>
+              <button type="submit" class="btn btn-primary">ΑΝΑΖΗΤΗΣΗ</button>
+            </form>
+          </div>
+          <div class="col-md-4 search_boxes outline">
+            <!-- Find stop -->
+            <h4 style="text-align: center">Είμαι στην στάση</h4>
+
+            <form action="/" method="post">
+              <div class="form-group">
+                <label for="input_stop">Επέλεξε γραμμή:</label>
+                <input type="text" class="form-control" id="input_stop" name="search_stop" placeholder="ΕΠΕΛΕΞΕ ΣΤΑΣΗ:">
+              </div>
+              <button type="submit" class="btn btn-primary">ΑΝΑΖΗΤΗΣΗ</button>
+            </form>
           </div>
         </div>
+        <!-- 3 icons -->
+        <div class="row text-center">
+          <div class="col-4 search_boxes outline">
+            <div class="row ">
+              <div class="col-12 "><i class="far fa-3x fa-clock"></i></div>
+              <div class="col-12">
+                <h5>
+                  Πληροφόρηση σε πραγματικό χρόνο
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 search_boxes outline">
+            <div class="row">
+              <div class="col-12"><i class="fas fa-3x fa-map-marked-alt"></i></div>
+              <div class="col-12">
+                <h5>
+                  Χάρτες
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 search_boxes outline">
+            <div class="row">
+              <div class="col-12"><i class="fas fa-3x fa-street-view"></i></div>
+              <div class="col-12">
+                <h5>
+                  Κοντά μου
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
       </div>
       <div class="col-md-3">
-        <div class="col-md-12 bg-warning">
-          <!-- col-4 -->
-          <div class="col-12 bg-success"> news</div>
-          <div class="col-12 bg-secondary"> gen news</div>
+        <!-- <div class="col-md-12 bg-warning"> -->
+        <!-- col-4 -->
+        <div class="col-12 bg-success">
+          <p>sa;djf</p>
+          <p>asdfasd</p>
+          <p>asdfasdf</p>
         </div>
+        <div class="col-12 bg-secondary">
+          <p>sa;djf</p>
+          <p>asdfasd</p>
+          <p>asdfasdf</p>
+        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
 
-
   <!-- <h1>Welcome to OASA</h1>
   <a href="/routes" class="btn btn-lg btn-success">View All Routes</a> -->
-  <!-- <% include ../partials/footer.ejs %> -->
+  <% include ../partials/footer.ejs %>
 </body>
 
 </html>
