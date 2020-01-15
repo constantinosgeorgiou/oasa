@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+    <% include ../partials/nav.ejs %>
+    <% include ../partials/alerts.ejs %>
+
+    <h1 style="text-align: center">Αγορά Εισητηρίων</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form action="/register" method="post">
+                    <div class="form-group">
+                        <label for="input_first_name">Όνομα</label>
+                        <input type="text" class="form-control" id="input_first_name" name="first_name"
+                            placeholder="Όνομα" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_last_name">Επίθετο</label>
+                        <input type="text" class="form-control" id="input_last_name" name="last_lame"
+                            placeholder="Επίθετο" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_telephone">Τηλέφωνο</label>
+                        <input type="text" class="form-control" minlength="10" maxlength="10" id="input_telephone"
+                            name="telephone" placeholder="Τηλέφωνο" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_afm">Α.Φ.Μ.</label>
+                        <input type="text" class="form-control" minlength="9" maxlength="9" id="input_afm" name="afm"
+                            placeholder="Α.Φ.Μ." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_email">Email</label>
+                        <input type="email" class="form-control" id="input_email" name="email"
+                            placeholder="john@doe.com" required>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <form action="/register" method="post">
+                    <div class="form-group">
+                        <label for="input_first_name">Ενιαίο Εισητήριο:1.40</label>
+                        <input type="number" class="form-control" id="eniaio" name="eniaio"
+                            placeholder="Αριθμός Εισητηρίων">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_first_name">Εισητήριο 3ημέρου:3.80</label>
+                        <input type="number" class="form-control" id="triimerou" name="triimerou"
+                            placeholder="Αριθμός Εισητηρίων">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_first_name">Εβδομαδιαίο Εισητήριο:3.80</label>
+                        <input type="number" class="form-control" id="evdomadiaio" name="evdomadiaio"
+                            placeholder="Αριθμός Εισητηρίων">
+                    </div>
+                </form>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Αγορά</button>
+        </div>
+
+
+
+        <% include ../partials/footer.ejs %>
+
+
+</body>
+
+</html>

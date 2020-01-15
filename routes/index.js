@@ -7,6 +7,18 @@ const {
     pool
 } = require('../migrations/config')
 
+router.get('/help', (request, response) => response.render('pages/help'))
+router.get('/accessibility', (request, response) => response.render('pages/accessibility'))
+router.get('/contact', (request, response) => response.render('pages/contact'))
+router.get('/ekdotiria', (request, response) => response.render('pages/ekdotiria'))
+router.get('/ticket', (request, response) => response.render('pages/ticket'))
+router.get('/about', (request, response) => response.render('pages/about'))
+router.get('/telematics', (request, response) => response.render('pages/telematics'))
+router.get('/maps', (request, response) => response.render('pages/maps'))
+router.get('/nearby', (request, response) => response.render('pages/nearby'))
+router.get('/meiomena', (request, response) => response.render('pages/meiomena'))
+
+
 // Root route
 router.get('/', (request, response) => response.render('pages/index'))
 

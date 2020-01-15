@@ -6,6 +6,9 @@ const {
     pool
 } = require('../migrations/config')
 
+
+
+
 // Root route - show profile
 router.get('/', (request, response) => {
     if (request.session.loggedin) {
