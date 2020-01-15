@@ -8,22 +8,10 @@ const {
 } = require('../migrations/config')
 
 // Root route
-router.get('/', (request, response) => response.render('pages/index', {
-    messages: {
-        danger: request.flash('danger'),
-        warning: request.flash('warning'),
-        success: request.flash('success')
-    }
-}))
+router.get('/', (request, response) => response.render('pages/index'))
 
 // Register / Sign up route
-router.get('/register', (request, response) => response.render('pages/register', {
-    messages: {
-        danger: request.flash('danger'),
-        warning: request.flash('warning'),
-        success: request.flash('success')
-    }
-}))
+router.get('/register', (request, response) => response.render('pages/register'))
 
 // handle register / sign up logic
 router.post('/register', async (request, response) => {
@@ -36,8 +24,6 @@ router.post('/register', async (request, response) => {
         email,
         password
     } = request.body
-    // Store salted and hashed password
-    // let pwd = await bcrypt.hash(request.body.password, 5)
 
     // Queries
     const retrieve_query = 'SELECT id FROM "users" WHERE email=$1'
@@ -46,7 +32,7 @@ router.post('/register', async (request, response) => {
     // Check if email address is already used
     pool.query(retrieve_query, [email], (error, result) => {
         if (result.rows[0]) {
-            request.flash('warning', "This email address is already registered. < a href = '/login'>Log in!</a > ");
+            request.flash('warning', "This email address is already registered.");
             response.redirect('/register')
         } else {
             // Insert user into users table
@@ -66,16 +52,7 @@ router.post('/register', async (request, response) => {
 
 
 // Log in route
-router.get('/login', (request, response) => {
-    response.render('pages/login', {
-        messages: {
-            danger: request.flash('danger'),
-            warning: request.flash('warning'),
-            success: request.flash('success')
-        }
-    })
-
-})
+router.get('/login', (request, response) => response.render('pages/login'))
 
 // handle log in logic
 // router.post('/login', passport.authenticate('local', {
@@ -90,7 +67,9 @@ router.post('/login', (request, response) => {
         email,
         password
     } = request.body
+
     const query = 'SELECT * FROM users WHERE email = $1 AND password = $2'
+    
     if (email && password) {
         pool.query(query, [email, password], (error, result) => {
             // console.log(result)

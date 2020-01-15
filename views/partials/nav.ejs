@@ -82,28 +82,4 @@
       </li>
     </ul>
 </nav>
-<div class="container">
-  <% if (messages) { %>
-  <% if (messages.warning) { %>
-  <% if (messages.warning.length) { %>
-  <div class="alert alert-warning" role="alert">
-    <%= messages.warning %>
-  </div>
-  <% } %>
-  <% } %>
-  <% if (messages.danger) { %>
-  <% if (messages.danger.length) { %>
-  <div class="alert alert-danger" role="alert">
-    <%= messages.danger %>
-  </div>
-  <% } %>
-  <% } %>
-  <% if (messages.success) { %>
-  <% if (messages.success.length) { %>
-  <div class="alert alert-success" role="alert">
-    <%= messages.success %>
-  </div>
-  <% } %>
-  <% } %>
-  <% } %>
-</div>
+
