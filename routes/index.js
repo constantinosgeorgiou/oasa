@@ -15,23 +15,15 @@ router.get('/register', (request, response) => response.render('pages/register')
 
 // handle register / sign up logic
 router.post('/register', async (request, response) => {
-    // const {
-    //     first_name,
-    //     last_name,
-    //     telephone,
-    //     afm,
-    //     email,
-    //     password
-    // } = request.body
-    console.log(request.body)
-    let first_name = request.body.first_name
-    let last_name = request.body.last_name
-    let telephone = request.body.telephone
-    let afm = request.body.afm
-    let email = request.body.email
-    let password = request.body.password
+    const {
+        first_name,
+        last_name,
+        telephone,
+        afm,
+        email,
+        password
+    } = request.body
 
-    console.log([uuidv4(), first_name, last_name, telephone, afm, email, password])
     // Queries
     const retrieve_query = 'SELECT id FROM "users" WHERE email=$1'
     const insert_query = 'INSERT INTO "users" (id, first_name, last_name, telephone, afm, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7)'
