@@ -14,27 +14,27 @@
       <form action="/register" method="post">
         <div class="form-group">
           <label for="input_first_name">Όνομα</label>
-          <input type="text" class="form-control" id="input_first_name" name="first_name" placeholder="Όνομα">
+          <input type="text" class="form-control" id="input_first_name" name="first_name" placeholder="Όνομα" required>
         </div>
         <div class="form-group">
           <label for="input_last_name">Επίθετο</label>
-          <input type="text" class="form-control" id="input_last_name" name="last_lame" placeholder="Επίθετο">
+          <input type="text" class="form-control" id="input_last_name" name="last_lame" placeholder="Επίθετο" required>
         </div>
         <div class="form-group">
           <label for="input_telephone">Τηλέφωνο</label>
-          <input type="text" class="form-control" id="input_telephone" name="telephone" placeholder="Τηλέφωνο">
+          <input type="text" class="form-control" minlength="10" maxlength="10" id="input_telephone" name="telephone" placeholder="Τηλέφωνο" required>
         </div>
         <div class="form-group">
           <label for="input_afm">Α.Φ.Μ.</label>
-          <input type="text" class="form-control" id="input_afm" name="afm" placeholder="Α.Φ.Μ.">
+          <input type="text" class="form-control" minlength="9" maxlength="9" id="input_afm" name="afm" placeholder="Α.Φ.Μ." required>
         </div>
         <div class="form-group">
           <label for="input_email">Email</label>
-          <input type="email" class="form-control" id="input_email" name="email" placeholder="john@doe.com">
+          <input type="email" class="form-control" id="input_email" name="email" placeholder="john@doe.com" required>
         </div>
         <div class="form-group">
           <label for="input_email">Κωδικός πρόσβασης</label>
-          <input type="password" class="form-control" id="input_email" name="password" placeholder="Κωδικός πρόσβασης">
+          <input type="password" class="form-control" id="input_email" name="password" placeholder="Κωδικός πρόσβασης" required>
         </div>
         <button type="submit" class="btn btn-lg btn-primary btn-block">Εγγραφή!</button>
       </form>
@@ -42,6 +42,7 @@
     </div>
   </div>
 
+  <% include ../partials/footer.ejs %>
 
 
 </body>
