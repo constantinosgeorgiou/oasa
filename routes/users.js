@@ -32,7 +32,22 @@ router.get('/edit', (request, response) => {
 
 // Update - update profile
 router.put('/edit', (request, response) => {
-    
+    const {
+        email,
+        password
+    } = request.body
+    const query = 'UPDATE users SET email = $1, password = $2 WHERE id = $3'
+
+    pool.query(query, [email, password, request.session.user.id], (error, result) => {
+        if (error) {
+            console.log(error)
+            throw error
+        }
+        request.session.user.email = email
+        console.log(result)
+        request.flash('success', 'User updated.')
+        response.redirect('/account');
+    })
 })
 
 module.exports = router;
