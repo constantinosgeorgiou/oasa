@@ -24,7 +24,6 @@ DROP TABLE IF EXISTS users cascade;
 CREATE TABLE IF NOT EXISTS users (
     id UUID NOT NULL,
     first_name VARCHAR(30),
-    middle_name VARCHAR(30),
     last_name VARCHAR(40),
     telephone VARCHAR(10),
     afm VARCHAR(9),
@@ -35,31 +34,31 @@ CREATE TABLE IF NOT EXISTS users (
 ) WITH (oids = false);
 
 -- seed user table
-INSERT INTO
-    users (
-        first_name,
-        last_name,
-        telephone,
-        afm,
-        email,
-        password
-    )
-VALUES
-    (
-        'Kyriakos',
-        '',
-        'Charalambous',
-        '6941234567',
-        '777777777',
-        'kyriakos@charalambous.com',
-        'password'
-    ),
-    (
-        'Constantinos',
-        '',
-        'Georgiou',
-        '6947777777',
-        '555555555',
-        'lordconstantinos@gmail.com',
-        'abcd1234'
-    );
+-- INSERT INTO
+--     users (
+--         first_name,
+--         last_name,
+--         telephone,
+--         afm,
+--         email,
+--         password
+--     )
+-- VALUES
+--     (
+--         'Kyriakos',
+--         '',
+--         'Charalambous',
+--         '6941234567',
+--         '777777777',
+--         'kyriakos@charalambous.com',
+--         'password'
+--     ),
+--     (
+--         'Constantinos',
+--         '',
+--         'Georgiou',
+--         '6947777777',
+--         '555555555',
+--         'lordconstantinos@gmail.com',
+--         'abcd1234'
+--     );
