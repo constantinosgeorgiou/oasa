@@ -8,8 +8,46 @@
 <body>
 
     <% include ../../partials/nav.ejs %>
+    <% include ../../partials/alerts.ejs %>
 
-    <h1>Welcome <%= user.first_name %></h1>
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-inverse">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1><%= user.first_name %> <%= user.last_name %></h1>
+                                <h4><%= user.email %></h4>
+                                <p><%= user.telephone %></p>
+                                <p><%= user.afm %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= user.first_name %> <%= user.last_name %></h5>
+                <h6 class="card-subtitle mb-2"><strong>Email: </strong><%= user.email %></h6>
+                <p class="card-text"><strong>Τηλέφωνο: </strong><%= user.telephone %></p>
+                <p class="card-text"><strong>Α.Φ.Μ.: </strong><%= user.afm %></p>
+                <a href="/account/edit" class="card-link btn btn-xs btn-warning">Επεξεργασία</a>
+                <!-- <a href="/account/remove" class="card-link text-danger">Διαγραφή</a> -->
+                <form class="deleteForm" action="/account/remove?_method=DELETE" method="POST">
+                    <button class="btn btn-xs btn-danger">Διαγραφή</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <% include ../../partials/footer.ejs %>
+
 
 </body>
 

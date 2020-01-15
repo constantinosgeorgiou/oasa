@@ -38,7 +38,6 @@ CREATE TABLE IF NOT EXISTS users (
 INSERT INTO
     users (
         first_name,
-        middle_name,
         last_name,
         telephone,
         afm,
