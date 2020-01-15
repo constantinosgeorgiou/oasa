@@ -25,29 +25,53 @@ router.get('/edit', (request, response) => {
             user: request.session.user
         })
     } else {
-        request.flash('warning', 'You need to be logged in')
+        request.flash('danger', 'Permission denied')
         response.redirect('/login')
     }
 })
 
 // Update - update profile
 router.put('/edit', (request, response) => {
-    const {
-        email,
-        password
-    } = request.body
-    const query = 'UPDATE users SET email = $1, password = $2 WHERE id = $3'
+    if (request.session.loggedin) {
+        const {
+            email,
+            password
+        } = request.body
+        const query = 'UPDATE users SET email = $1, password = $2 WHERE id = $3'
+        pool.query(query, [email, password, request.session.user.id], (error, result) => {
+            if (error) {
+                console.log(error)
+                throw error
+            }
+            request.session.user.email = email
+            console.log(result)
+            request.flash('success', 'User updated.')
+            response.redirect('/account');
+        })
+    } else {
+        request.flash('danger', 'Permission denied')
+        response.redirect('/login')
+    }
+})
 
-    pool.query(query, [email, password, request.session.user.id], (error, result) => {
-        if (error) {
-            console.log(error)
-            throw error
-        }
-        request.session.user.email = email
-        console.log(result)
-        request.flash('success', 'User updated.')
-        response.redirect('/account');
-    })
+// Destroy - delete user
+router.delete('/', (request, response) => {
+    if (request.session.loggedin) {
+        const query = 'DELETE FROM users WHERE id = $1'
+        pool.query(query, [request.session.user.id], (error, results) => {
+            if (error) {
+                console.log(error)
+                throw error
+            }
+            request.session.user = {}
+            request.session.loggedin = false
+            request.flash('success', 'Deleted user')
+            response.redirect("/")
+        })
+    } else {
+        request.flash('danger', 'Permission denied')
+        response.redirect('/login')
+    }
 })
 
 module.exports = router;
