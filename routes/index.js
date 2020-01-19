@@ -30,8 +30,8 @@ router.get('/register', (request, response) => response.render('pages/register')
 // handle register / sign up logic
 router.post('/register', async (request, response) => {
     const {
-        first_name,
-        last_name,
+        firstName,
+        lastName,
         telephone,
         afm,
         email,
@@ -40,7 +40,7 @@ router.post('/register', async (request, response) => {
 
     // Queries
     const retrieve_query = 'SELECT id FROM "users" WHERE email=$1'
-    const insert_query = 'INSERT INTO "users" (id, first_name, last_name, telephone, afm, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7)'
+    const insert_query = 'INSERT INTO "users" (id, firstName, lastName, telephone, afm, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7)'
 
     // Check if email address is already used
     pool.query(retrieve_query, [email], (error, result) => {
@@ -49,7 +49,7 @@ router.post('/register', async (request, response) => {
             response.redirect('/register')
         } else {
             // Insert user into users table
-            pool.query(insert_query, [uuidv4(), first_name, last_name, telephone, afm, email, password], (error, result) => {
+            pool.query(insert_query, [uuidv4(), firstName, lastName, telephone, afm, email, password], (error, result) => {
                 if (error) {
                     console.log(error)
                     throw error
@@ -82,8 +82,8 @@ router.post('/login', (request, response) => {
                 request.session.loggedin = true
                 let user = {
                     id: result.rows[0].id,
-                    first_name: result.rows[0].first_name,
-                    last_name: result.rows[0].last_name,
+                    firstName: result.rows[0].first_name,
+                    lastName: result.rows[0].last_name,
                     telephone: result.rows[0].telephone,
                     afm: result.rows[0].afm,
                     email: result.rows[0].email
