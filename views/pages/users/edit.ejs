@@ -10,7 +10,7 @@
   <% include ../../partials/nav.ejs %>
   <% include ../../partials/alerts.ejs %>
 
-  <div class="row">
+  <!-- <div class="row">
     <div style="width: 30%; margin: 25px auto;">
       <h1 style="text-align: center">Επεξεργασία λογαριασμού</h1>
       <form action="/account/edit?_method=PUT" method="post">
@@ -25,6 +25,47 @@
         <button type="submit" class="btn btn-lg btn-primary btn-block">Υποβολή</button>
       </form>
       <a href="/account">Πίσω</a>
+    </div>
+  </div> -->
+
+  <div class="row">
+    <div style="width: 30%; margin: 25px auto;">
+      <h1 style="text-align: center">Επεξεργασία Δεδομένων</h1>
+      <form action="/account/edit?_method=PUT" method="post">
+        <div class="form-group">
+          <label for="input_first_name">Όνομα</label>
+          <input type="text" class="form-control" id="input_first_name" name="first_name" placeholder="Όνομα" required>
+        </div>
+        <div class="form-group">
+          <label for="input_last_name">Επίθετο</label>
+          <input type="text" class="form-control" id="input_last_name" name="last_name" placeholder="Επίθετο" required>
+        </div>
+        <div class="form-group">
+          <label for="input_telephone">Τηλέφωνο</label>
+          <input type="text" class="form-control" minlength="10" maxlength="10" id="input_telephone" name="telephone"
+            placeholder="Τηλέφωνο" required>
+        </div>
+        <div class="form-group">
+          <label for="input_afm">Α.Φ.Μ.</label>
+          <input type="text" class="form-control" minlength="9" maxlength="9" id="input_afm" name="afm"
+            placeholder="Α.Φ.Μ.">
+            <small id="afmHelp" class="form-text text-muted">*Για επιχειρηματίες μόνο.</small>
+        </div>
+  
+        
+        <div class="form-group">
+          <label for="input_email">Email</label>
+          <input type="email" class="form-control" id="input_email" name="email" placeholder="john@doe.com" required>
+        </div>
+        <hr class="my-4">
+
+        <div class="form-group">
+          <label for="input_email">Κωδικός πρόσβασης</label>
+          <input type="password" class="form-control" id="input_email" name="password" placeholder="Κωδικός πρόσβασης"
+            required>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Αλλαγή Δεδομένων</button>
+      </form>
     </div>
   </div>
 

@@ -16,7 +16,7 @@ router.get('/about', (request, response) => response.render('pages/about'))
 router.get('/telematics', (request, response) => response.render('pages/telematics'))
 router.get('/maps', (request, response) => response.render('pages/maps'))
 router.get('/nearby', (request, response) => response.render('pages/nearby'))
-router.get('/meiomena', (request, response) => response.render('pages/meiomena'))
+router.get('/reducedfare', (request, response) => response.render('pages/reducedfare'))
 router.get('/news', (request, response) => response.render('pages/news'))
 router.get('/proexoxes', (request, response) => response.render('pages/proexoxes'))
 
