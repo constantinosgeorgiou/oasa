@@ -13,7 +13,7 @@ const {
 router.get('/', (request, response) => {
     if (request.session.loggedin) {
         response.render('pages/users/index', {
-            user: request.session.user
+            user: request.session.currentUser
         })
     } else {
         request.flash('warning', 'You need to be logged in')

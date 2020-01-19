@@ -23,6 +23,9 @@ https://www.taniarascia.com/node-express-postgresql-heroku/
 Log in / sign up:
 https://medium.com/@timtamimi/getting-started-with-authentication-in-node-js-with-passport-and-postgresql-2219664b568c
 
+Session:
+http://expressjs-book.com/index.html%3Fp=128.html
+
 
 o----------o
 :POSTGRESQL:

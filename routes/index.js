@@ -22,7 +22,12 @@ router.get('/proexoxes', (request, response) => response.render('pages/proexoxes
 
 
 // Root route
-router.get('/', (request, response) => response.render('pages/index'))
+router.get('/', (request, response) => {
+    if (!request.session.loggedin) {
+        request.session.loggedin = false
+    }
+    response.render('pages/index')
+})
 
 // Register / Sign up route
 router.get('/register', (request, response) => response.render('pages/register'))
@@ -82,13 +87,14 @@ router.post('/login', (request, response) => {
                 request.session.loggedin = true
                 let user = {
                     id: result.rows[0].id,
-                    firstName: result.rows[0].first_name,
-                    lastName: result.rows[0].last_name,
+                    firstName: result.rows[0].firstName,
+                    lastName: result.rows[0].lastName,
                     telephone: result.rows[0].telephone,
                     afm: result.rows[0].afm,
                     email: result.rows[0].email
                 }
-                request.session.user = user
+                request.session.currentUser = user
+                console.log("request.session.currentUser => ", request.session.currentUser)
                 response.redirect('/account')
             } else {
                 // incorrect email / password
@@ -103,9 +109,9 @@ router.post('/login', (request, response) => {
 
 // Log out route
 router.get("/logout", (request, response) => {
-    request.session.user = {}
+    delete request.session.currentUser
+    delete response.locals.currentUser
     request.session.loggedin = false
-    
     request.flash('success', 'Logged you out!')
     response.redirect("/")
 });

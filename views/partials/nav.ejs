@@ -73,6 +73,7 @@
     </ul>
 
     <ul class="nav">
+      <% if(!currentUser) { %>
       <li class="nav-item">
         <button type="button" class="btn btn-outline-primary">
           <a href="/register">Εγγραφή <i class="fas fa-user-plus"></i></a>
@@ -82,5 +83,18 @@
         <button type="button" class="btn btn-outline-primary"><a href="/login">Είσοδος <i class="fas fa-user"></i></a>
         </button>
       </li>
+      <% } else { %>
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-secondary">
+          <a href="/logout">Αποσύνδεση<i class=""></i></a>
+        </button>
+      </li>
+      <% } %>
     </ul>
 </nav>
+<% console.log(currentUser) %>
+<% if (loggedin == true) { %>
+<%   console.log("loggedIn") %>
+<% } else { %>
+<%   console.log("not loggedIn") %>
+<% } %>
