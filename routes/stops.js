@@ -68,69 +68,20 @@ router.post('/', (request, response) => {
 })
 router.get('/:id', (request, response) => {
     const retrieveStop = 'SELECT * FROM stops WHERE id=$1'
-    const retrieveRoutes = 'SELECT rname,startpoint,endpoint FROM routes WHERE rname=$1'
+    // const retrieveRoutes = 'SELECT rname,startpoint,endpoint FROM routes WHERE rname=$1'
     let stopid = request.params.id
     pool.query(retrieveStop, [stopid], (error, results) => {
         if (results.rowCount == 0) {
             request.flash('warning', "Η στάση δεν υπάρχει");
             response.redirect('/stops')
         } else {
-            console.log(retrieveRoutes)
-            console.log(results.rows[0].routes)
-            console.log(results.rowCount)
-            let routes = []
-            results.rows[0].routes.forEach(route => {
-                pool.query(retrieveRoutes, [route], (error, result) => {
-                    console.log(result.rows[0])
-                    routes.push(result.rows[0])
-                    console.log(routes)
-                })
-            });
+            // console.log("retrieveRoutes:", retrieveRoutes)
+            console.log("array", results.rows[0])
+
             response.render('pages/stops/show', {
                 stop: results.rows[0]
             })
         }
-
-        // if (error) {
-        //     // console.log(error)
-        //     throw error
-        // }
-        // // console.log(results.rows[0].stops)
-        // // let stopsArray = new Array(results.rows[0].stops.length)
-        // // Retrieve route stops
-        // // for (let eachStop = 1; eachStop <= results.rows[0].stops.length; eachStop++) {
-        // //     console.log(results.rows[0].stops)
-        // //     console.log(results.rows[0].stops.pop())
-
-        // // let id = results.rows[0].stops.pop()
-        // // console.log(id)
-
-        // // }
-        // // results.rows[0].stops.forEach(eachStop => {
-        // //     console.log(results.rows[0].stops)
-        // //     // console.log(results.rows[0].stops[eachStop])
-        // //     let id = results.rows[0].stops.pop()
-        // //     console.log(id)
-
-        // // });
-        // // pool.query(retrieveStops, [eachStop], (error, result) => {
-
-        // //     if (error) {
-        // //         console.log(error)
-        // //         throw error
-        // //     }
-        // //     console.log(result.rows[0])
-        // //     // stopsArray.push(result.rows[0].sname)
-        // //     // console.log("name", stopsArray[stop])
-        // // })
-        // // results.rows[0].stops.forEach(stop => {
-        // // })
-        // console.log("\n RETRIEVED\n ---------\n\n", results.rows)
-        // // console.log(stopsArray)
-
-        // response.render('pages/stops/show', {
-        //     stop: results.rows[0]
-        // })
     })
 })
 

@@ -28,7 +28,7 @@ app.use(flash());
 app.use(session({
     secret: 'Santra! Pou en to koustoumi sou?',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
 }))
 
 app.use((request, response, next) => {
