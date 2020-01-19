@@ -13,6 +13,7 @@ const indexRoutes = require("./routes/index")
 const userRoutes = require("./routes/users")
 const orderRoutes = require("./routes/orders")
 const routeRoutes = require("./routes/routes")
+const stopRoutes = require("./routes/stops")
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -40,6 +41,7 @@ app.use((request, response, next) => {
 app.use("/", indexRoutes)
 app.use("/account", userRoutes)
 // app.use("/users/:id/orders", orderRoutes)
+app.use("/stops", stopRoutes)
 app.use("/routes", routeRoutes)
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
