@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../partials/header.ejs %>
+</head>
+
+<body>
+
+    <% include ../../partials/nav.ejs %>
+    <% include ../../partials/alerts.ejs %>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4"><%= stop.sname %></h1>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h2>Δρομολόγια που εξυπηρετούν την στάση:</h2>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-action">
+                       routes
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+    <% include ../../partials/footer.ejs %>
+
+</body>
+
+</html>
