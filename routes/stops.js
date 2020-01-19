@@ -60,7 +60,7 @@ router.post('/', (request, response) => {
                 request.flash('warning', "Η στάση δεν υπάρχει");
                 response.redirect('back')
             } else {
-                console.log(results)
+                // console.log(results)
                 response.redirect('/stops/' + results.rows[0].id)
             }
         })
@@ -68,13 +68,24 @@ router.post('/', (request, response) => {
 })
 router.get('/:id', (request, response) => {
     const retrieveStop = 'SELECT * FROM stops WHERE id=$1'
-    const retrieveRoutes = 'SELECT rname FROM routes WHERE id=$1'
+    const retrieveRoutes = 'SELECT rname,startpoint,endpoint FROM routes WHERE rname=$1'
     let stopid = request.params.id
     pool.query(retrieveStop, [stopid], (error, results) => {
         if (results.rowCount == 0) {
             request.flash('warning', "Η στάση δεν υπάρχει");
             response.redirect('/stops')
         } else {
+            console.log(retrieveRoutes)
+            console.log(results.rows[0].routes)
+            console.log(results.rowCount)
+            let routes = []
+            results.rows[0].routes.forEach(route => {
+                pool.query(retrieveRoutes, [route], (error, result) => {
+                    console.log(result.rows[0])
+                    routes.push(result.rows[0])
+                    console.log(routes)
+                })
+            });
             response.render('pages/stops/show', {
                 stop: results.rows[0]
             })
