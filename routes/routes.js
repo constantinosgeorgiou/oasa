@@ -8,7 +8,7 @@ const {
 
 // INDEX - show all routes
 router.get('/', (request, response) => {
-    pool.query('SELECT * FROM routes', (error, results) => {
+    pool.query('SELECT * FROM routes WHERE isairportroute=FALSE', (error, results) => {
         if (error) {
             console.log(error)
             throw error

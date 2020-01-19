@@ -9,29 +9,26 @@
 
     <% include ../../partials/nav.ejs %>
     <% include ../../partials/alerts.ejs %>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Δρομολόγια</h1>      
+        </div>
 
-    <section class="search-banner text-white py-3  form-background" id="search-banner">
-        <div class="container py-5 my-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card background-color-form">
-                        <div class="card-body">
-                            <h1>Δρομολόγια</h1>
-                            <% routes.forEach((route) => { %>
-                            <p>
-                                <a href="/routes/<%= route.rname %>">
-                                    <%= route.rname %>, <%= route.startpoint %>, <%= route.endpoint %>
-                                </a>
-                            </p>
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-group">
+                    <% routes.forEach((route) => { %>
+                    <li class="list-group-item list-group-item-action">
+                        <a href="/routes/<%= route.rname %>">
+                            <%= route.rname %>, <%= route.startpoint %> - <%= route.endpoint %>
+                        </a>
+                    </li>
+                    <% }) %>
+                </ul>
 
-                            <% }) %>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <% include ../../partials/footer.ejs %>
 
