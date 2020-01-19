@@ -9,32 +9,35 @@
 
     <% include ../../partials/nav.ejs %>
     <% include ../../partials/alerts.ejs %>
-    <section class="search-banner text-white py-3  form-background" id="search-banner">
-        <div class="container py-5 my-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card background-color-form">
-                        <div class="card-body">
-                            <h1>Δρομολόγια αεροδρομίου</h1>
-                            <p>
-                                <a href="/routes/X95">
-                                    X95, ΣΥΝΤΑΓΜΑ, ΚΤΙΡΙΟ ΑΝΑΧΩΡΗΣΕΩΝ
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Δρομολόγια Αεροδρoμίου</h1>
+            <hr class="my-4">
+            <p class="lead">Ο Διεθνής Αερολιμένας Αθηνών "Ελευθέριος Βενιζέλος" εξυπηρετείται σε 24ωρη βάση από από όλες τις
+                λεωφορειακές γραμμές EXPRESS. Επίσης εξυπηρετείται από το ΜΕΤΡΟ (
+                <a title="ΗΛΕΚΤΟΝΙΚΗ ΔΙΕΥΘΗΝΣΗ ΜΕΤΡΟ" href="http://www.amel.gr/"
+                    target="_blank">http://www.stasy.gr</a>)
+                και τον ΠΡΟΑΣΤΙΑΚΟ σιδηρόδρομο (<a title="ΗΛΕΚΤΟΝΙΚΗ ΔΙΕΥΘΗΝΣΗ ΠΡΟΑΣΤΙΑΚΟΣ Α.Ε."
+                    href="http://www.trainose.gr/" target="_blank">http://www.trainose.gr</a>).
+                Επιλέξτε τη λεωφορειακή γραμμή που επιθυμείτε και ενημερωθείτε για τα δρομολόγια, τη διαδρομή και τις
+                στάσεις της. </p>
+        </div>
 
-                </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-group">
+                    <% routes.forEach((route) => { %>
+                    <li class="list-group-item list-group-item-action">
+                        <a href="/routes/<%= route.rname %>">
+                            <%= route.rname %>, <%= route.startpoint %> - <%= route.endpoint %>
+                        </a>
+                    </li>
+                    <% }) %>
+                </ul>
+
             </div>
         </div>
-    </section>
-
-    <h1>Δρομολόγια αεροδρομίου</h1>
-    <p>
-        <a href="/routes/X95 %>">
-            X95, ΣΥΝΤΑΓΜΑ, ΚΤΙΡΙΟ ΑΝΑΧΩΡΗΣΕΩΝ
-        </a>
-    </p>
+    </div>
 
     <% include ../../partials/footer.ejs %>
 

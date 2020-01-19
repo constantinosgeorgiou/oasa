@@ -9,54 +9,38 @@
 
     <% include ../../partials/nav.ejs %>
     <% include ../../partials/alerts.ejs %>
-    <section class="search-banner text-white py-3  form-background" id="search-banner">
-        <div class="container py-5 my-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card background-color-form">
-                        <div class="card-body">
-                            <h1 style="text-align: center"><%= route.route_name %>, <%= route.start_point %>,
-                                <%= route.end_point %></h1>
-                            <div class="container">
-                                <div class="row align-items-start">
-                                    <div class="col-8">
-                                        <form action="/register" method="post">
-                                            <div class="form-group">
-                                                Χάρτης
-                                            </div>
-                                            <iframe src="<%= route.map %>" width="600" height="450" frameborder="0"
-                                                style="border:0;" allowfullscreen=""></iframe>
-                                        </form>
-                                    </div>
-                                    <div class="col-4">
-                                        <form action="/register" method="post">
-                                            <div class="form-group">
-                                                Στάσεις Δρομολογείου
-                                            </div>
-                                            <ul>
-                                                <li><%= route.start_point %></li>
-                                                <li>..</li>
-                                                <li>..</li>
-                                                <li>Ευαγγελισμός</li>
-                                                <li>..</li>
-                                                <li>Σύνταγμα</li>
-                                                <li>..</li>
-                                                <li>..</li>
-                                                <li><%= route.end_point %></li>
-                                            </ul>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <h1 style="text-align: center"><%= route.rname %>, <%= route.startpoint %> - <%= route.endpoint %></h1>
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-md-6 outline">
+                <h3>
+                    Χάρτης
+                </h3>
+                <div class="embed-responsive embed-responsive-1by1">
+                    <iframe class="embed-responsive-item" src="<%= route.map %>" width="600" height="450"
+                        frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                 </div>
+            </div>
+            <div class=" col-md-6 outline">
+                <h3>
+                    Στάσεις Δρομολογείου
+                </h3>
 
+                <ul>
+          
+                    <li>Νεκροταφείο Ζωγράφου</li>
+                    <li>..</li>
+                    <li>..</li>
+                    <li>Ευαγγελισμός</li>
+                    <li>..</li>
+                    <li>Σύνταγμα</li>
+                    <li>..</li>
+                    <li>..</li>
+                    <li>Γαλάτσι</li>
+                </ul>
             </div>
         </div>
-        </div>
-    </section>
-
+    </div>
 
     <% include ../../partials/footer.ejs %>
 

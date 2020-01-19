@@ -9,26 +9,30 @@
 
     <% include ../../partials/nav.ejs %>
     <% include ../../partials/alerts.ejs %>
-    <section class="search-banner text-white py-3  form-background" id="search-banner">
-        <div class="container py-5 my-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card background-color-form">
-                        <div class="card-body">
-                            <h1>24ωρα δρομολόγια</h1>
-                            <p>
-                                <a href="/routes/X95">
-                                    X95, ΣΥΝΤΑΓΜΑ, ΚΤΙΡΙΟ ΑΝΑΧΩΡΗΣΕΩΝ
-                                </a>
-                            </p>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">24ωρα δρομολόγια</h1>
+            <hr class="my-4">
+            <p class="lead">Ο Οργανισμός Αστικών Συγκοινωνιών συνεχίζοντας την προσπάθεια για την καλύτερη εξυπηρέτηση
+                του επιβατικού κοινού έχει δημιουργήσει ένα βασικό δίκτυο για την 24-ωρη σύνδεση κομβικών σημείων του
+                Λεκανοπεδίου.</p>
+        </div>
 
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-group">
+                    <% routes.forEach((route) => { %>
+                    <li class="list-group-item list-group-item-action">
+                        <a href="/routes/<%= route.rname %>">
+                            <%= route.rname %>, <%= route.startpoint %> - <%= route.endpoint %>
+                        </a>
+                    </li>
+                    <% }) %>
+                </ul>
 
-                </div>
             </div>
         </div>
-    </section>
+    </div>
 
 
     <% include ../../partials/footer.ejs %>
