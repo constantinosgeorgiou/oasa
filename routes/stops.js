@@ -68,7 +68,6 @@ router.post('/', (request, response) => {
 })
 router.get('/:id', (request, response) => {
     const retrieveStop = 'SELECT * FROM stops WHERE id=$1'
-    // const retrieveRoutes = 'SELECT rname,startpoint,endpoint FROM routes WHERE rname=$1'
     let stopid = request.params.id
     pool.query(retrieveStop, [stopid], (error, results) => {
         if (results.rowCount == 0) {

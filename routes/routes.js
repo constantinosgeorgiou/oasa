@@ -84,49 +84,25 @@ router.post('/', (request, response) => {
 })
 router.get('/:route', (request, response) => {
     const retrieveRoute = 'SELECT * FROM routes WHERE rname=$1'
-    const retrieveStops = 'SELECT sname FROM stops WHERE id=$1'
     let rname = request.params.route
     pool.query(retrieveRoute, [rname], (error, results) => {
-        if (error) {
-            // console.log(error)
-            throw error
-        }
-        // console.log(results.rows[0].stops)
-        // let stopsArray = new Array(results.rows[0].stops.length)
-        // Retrieve route stops
-        // for (let eachStop = 1; eachStop <= results.rows[0].stops.length; eachStop++) {
-        //     console.log(results.rows[0].stops)
-        //     console.log(results.rows[0].stops.pop())
-
-        // let id = results.rows[0].stops.pop()
-        // console.log(id)
-
+        // if (error) {
+        //     // console.log(error)
+        //     throw error
         // }
-        // results.rows[0].stops.forEach(eachStop => {
-        //     console.log(results.rows[0].stops)
-        //     // console.log(results.rows[0].stops[eachStop])
-        //     let id = results.rows[0].stops.pop()
-        //     console.log(id)
 
-        // });
-        // pool.query(retrieveStops, [eachStop], (error, result) => {
-
-        //     if (error) {
-        //         console.log(error)
-        //         throw error
-        //     }
-        //     console.log(result.rows[0])
-        //     // stopsArray.push(result.rows[0].sname)
-        //     // console.log("name", stopsArray[stop])
+        // response.render('pages/routes/show', {
+        //     route: results.rows[results.rowCount - 1]
         // })
-        // results.rows[0].stops.forEach(stop => {
-        // })
-        // console.log("\n RETRIEVED\n ---------\n\n", results.rows)
-        // console.log(stopsArray)
 
-        response.render('pages/routes/show', {
-            route: results.rows[results.rowCount - 1]
-        })
+        if (results.rowCount == 0) {
+            request.flash('warning', "Η γραμμή δεν υπάρχει");
+            response.redirect('back')
+        } else {
+            response.render('pages/routes/show', {
+                route: results.rows[0]
+            })
+        }
     })
 })
 

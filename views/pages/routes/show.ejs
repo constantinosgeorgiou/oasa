@@ -22,21 +22,17 @@
                 </div>
             </div>
             <div class=" col-md-6 outline">
-                <h3>
-                    Στάσεις Δρομολογείου
-                </h3>
-
-                <ul>
-          
-                    <li>Νεκροταφείο Ζωγράφου</li>
-                    <li>..</li>
-                    <li>..</li>
-                    <li>Ευαγγελισμός</li>
-                    <li>..</li>
-                    <li>Σύνταγμα</li>
-                    <li>..</li>
-                    <li>..</li>
-                    <li>Γαλάτσι</li>
+                <h3> Στάσεις Δρομολογείου </h3>
+                <ul class="list-group">
+                    <%  route.stops.forEach((stop) => { %>
+                    <li class="list-group-item list-group-item-action">
+                        <% let routeArray = stop.split(',')%>
+                        <% console.log(routeArray) %>
+                        <a href="/stops/<%= routeArray[0] %>">
+                            <%= routeArray[1] %>
+                        </a>
+                    </li>
+                    <% }) %>
                 </ul>
             </div>
         </div>
