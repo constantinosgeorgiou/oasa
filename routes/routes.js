@@ -52,7 +52,27 @@ router.get('/airport', (request, response) => {
     })
 })
 
+router.post('/plan', (request, response) => {
+    let {
+        from,
+        to
+    } = request.body
 
+    from = (from) ? from : '*'
+    to = (to) ? to : '*'
+
+    const query = 'SELECT rname FROM routes WHERE startpoint=$1 AND endpoint=$2'
+
+    pool.query(query, [from, to], (error, results) => {
+        if (results.rowCount == 0) {
+            request.flash('warning', "Τα στοιχεία που δώσατε δεν επιστρέφουν κάποιο αποτέλεσμα");
+            response.redirect('back')
+        } else {
+            console.log(results.rows[0].rname)
+            response.redirect('/routes/' + results.rows[0].rname)
+        }
+    })
+})
 
 // SHOW - show more info for a specific route or all routes
 router.post('/', (request, response) => {
@@ -86,15 +106,6 @@ router.get('/:route', (request, response) => {
     const retrieveRoute = 'SELECT * FROM routes WHERE rname=$1'
     let rname = request.params.route
     pool.query(retrieveRoute, [rname], (error, results) => {
-        // if (error) {
-        //     // console.log(error)
-        //     throw error
-        // }
-
-        // response.render('pages/routes/show', {
-        //     route: results.rows[results.rowCount - 1]
-        // })
-
         if (results.rowCount == 0) {
             request.flash('warning', "Η γραμμή δεν υπάρχει");
             response.redirect('back')
