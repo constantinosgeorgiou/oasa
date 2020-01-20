@@ -1,3 +1,11 @@
+.top-padding {
+	padding-top: 2%;
+}
+
+.bottom-padding {
+	padding-bottom: 3%;
+}
+
 .jumbotron {
 	background: url(/bus40.jpg) center center / cover no-repeat;
 	height: 100%;

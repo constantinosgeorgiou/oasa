@@ -139,7 +139,7 @@ router.post('/register', async (request, response) => {
                     throw error
                 }
                 console.log(result)
-                request.flash('success', 'User created.')
+                request.flash('success', 'Επιτυχής εγγραφή χρήστη')
                 response.redirect('/login');
             })
         }
