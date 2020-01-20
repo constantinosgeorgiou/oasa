@@ -14,6 +14,10 @@ router.get('/', (request, response) => {
             throw error
         }
         console.log("\n\n RETRIEVED\n ---------\n\n", results.rows)
+        request.breadcrumbs({
+            name: 'Στάσεις',
+            url: '/stops'
+        })
         response.render('pages/stops/index', {
             stops: results.rows,
             page: 'stops'
@@ -29,6 +33,10 @@ router.get('/accessibility', (request, response) => {
             throw error
         }
         console.log("\n\n RETRIEVED\n ---------\n\n", results.rows)
+        request.breadcrumbs({
+            name: 'Στάσεις με Προεξοχές',
+            url: '/stops/accessibility'
+        })
         response.render('pages/stops/accessibility', {
             stops: results.rows,
             page: 'stops'
@@ -76,7 +84,13 @@ router.get('/:id', (request, response) => {
         } else {
             // console.log("retrieveRoutes:", retrieveRoutes)
             console.log("array", results.rows[0])
-
+            request.breadcrumbs([{
+                name: 'Στάσεις',
+                url: '/stops'
+            }, {
+                name: results.rows[0].sname,
+                url: '/stops/' + stopid
+            }])
             response.render('pages/stops/show', {
                 stop: results.rows[0]
             })

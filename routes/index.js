@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const uuidv4 = require('uuid/v4')
+const breadcrumbs = require('express-breadcrumbs')
 
 // Connect to database
 const {
@@ -8,19 +9,90 @@ const {
 } = require('../migrations/config')
 
 // Miscellaneous routes
-router.get('/history', (request, response) => response.render('pages/miscellaneous/history'))
-router.get('/business', (request, response) => response.render('pages/miscellaneous/business'))
-router.get('/prokirikseis', (request, response) => response.render('pages/miscellaneous/prokirikseis'))
-router.get('/help', (request, response) => response.render('pages/miscellaneous/help'))
-router.get('/accessibility', (request, response) => response.render('pages/miscellaneous/accessibility'))
-router.get('/contact', (request, response) => response.render('pages/miscellaneous/contact'))
-router.get('/ekdotiria', (request, response) => response.render('pages/miscellaneous/ekdotiria'))
-router.get('/about', (request, response) => response.render('pages/miscellaneous/about'))
-router.get('/telematics', (request, response) => response.render('pages/miscellaneous/telematics'))
-router.get('/maps', (request, response) => response.render('pages/miscellaneous/maps'))
-router.get('/nearby', (request, response) => response.render('pages/miscellaneous/nearby'))
-router.get('/reducedfare', (request, response) => response.render('pages/miscellaneous/reducedfare'))
-router.get('/news', (request, response) => response.render('pages/miscellaneous/news'))
+router.get('/history', (request, response) => {
+    request.breadcrumbs({
+        name: 'Ιστορία',
+        url: '/history'
+    })
+    response.render('pages/miscellaneous/history')
+})
+router.get('/business', (request, response) => {
+    request.breadcrumbs({
+        name: 'Για Επιχειρηματίες',
+        url: '/business'
+    })
+    response.render('pages/miscellaneous/business')
+})
+router.get('/prokirikseis', (request, response) => {
+    request.breadcrumbs({
+        name: 'Προκυρήξεις',
+        url: '/prokirikseis'
+    })
+    response.render('pages/miscellaneous/prokirikseis')
+})
+router.get('/help', (request, response) => {
+    request.breadcrumbs({
+        name: 'Βοήθεια',
+        url: '/help'
+    })
+    response.render('pages/miscellaneous/help')
+})
+router.get('/accessibility', (request, response) => {
+    request.breadcrumbs({
+        name: 'ΑμεΑ',
+        url: '/accessibility'
+    })
+    response.render('pages/miscellaneous/accessibility')
+})
+router.get('/contact', (request, response) => {
+    request.breadcrumbs({
+        name: 'Επικοινωνία',
+        url: '/contact'
+    })
+    response.render('pages/miscellaneous/contact')
+})
+router.get('/ekdotiria', (request, response) => {
+    request.breadcrumbs({
+        name: 'Εκδοτήρια',
+        url: '/ekdotiria'
+    })
+    response.render('pages/miscellaneous/ekdotiria')
+})
+router.get('/telematics', (request, response) => {
+    request.breadcrumbs({
+        name: 'Πληροφόρηση σε πραγματικό χρόνο',
+        url: '/telematics'
+    })
+    response.render('pages/miscellaneous/telematics')
+})
+router.get('/maps', (request, response) => {
+    request.breadcrumbs({
+        name: 'Χάρτες',
+        url: '/maps'
+    })
+    response.render('pages/miscellaneous/maps')
+})
+router.get('/nearby', (request, response) => {
+    request.breadcrumbs({
+        name: 'Κοντά μου',
+        url: '/nearby'
+    })
+    response.render('pages/miscellaneous/nearby')
+})
+router.get('/reducedfare', (request, response) => {
+    request.breadcrumbs({
+        name: 'Δικαιούχοι μειωμένου κομίστρου',
+        url: '/reducedfare'
+    })
+    response.render('pages/miscellaneous/reducedfare')
+})
+router.get('/news', (request, response) => {
+    request.breadcrumbs({
+        name: 'Ανακοινώσεις',
+        url: '/news'
+    })
+    response.render('pages/miscellaneous/news')
+})
 
 // Root route
 router.get('/', (request, response) => {
@@ -31,7 +103,13 @@ router.get('/', (request, response) => {
 })
 
 // Register / Sign up route
-router.get('/register', (request, response) => response.render('pages/register'))
+router.get('/register', (request, response) => {
+    request.breadcrumbs({
+        name: 'Εγγραφή',
+        url: '/register'
+    })
+    response.render('pages/register')
+})
 
 // handle register / sign up logic
 router.post('/register', async (request, response) => {
@@ -71,7 +149,16 @@ router.post('/register', async (request, response) => {
 
 
 // Log in route
-router.get('/login', (request, response) => response.render('pages/login'))
+router.get('/login', (request, response) => {
+    request.breadcrumbs({
+        name: 'Είσοδος',
+        url: '/login'
+    })
+    // response.render('pages/register', {
+    //     breadcrumbs: request.breadcrumbs()
+    // })
+    response.render('pages/login')
+})
 
 // handle log in logic
 router.post('/login', (request, response) => {

@@ -14,6 +14,10 @@ router.get('/', (request, response) => {
             throw error
         }
         console.log("\n\n RETRIEVED\n ---------\n\n", results.rows)
+        request.breadcrumbs({
+            name: 'Δρομολόγια',
+            url: '/routes'
+        })
         response.render('pages/routes/index', {
             routes: results.rows,
             page: 'routes'
@@ -29,6 +33,13 @@ router.get('/24hr', (request, response) => {
             throw error
         }
         console.log("\n\n RETRIEVED\n ---------\n\n", results.rows)
+        request.breadcrumbs([{
+            name: 'Δρομολόγια',
+            url: '/routes'
+        }, {
+            name: '24ωρα δρομολόγια',
+            url: '/routes/24hr'
+        }])
         response.render('pages/routes/routes24', {
             routes: results.rows,
             page: 'routes'
@@ -45,6 +56,13 @@ router.get('/airport', (request, response) => {
             throw error
         }
         console.log("\n\n RETRIEVED\n ---------\n\n", results.rows)
+        request.breadcrumbs([{
+            name: 'Δρομολόγια',
+            url: '/routes'
+        }, {
+            name: 'Αεροδρομίου',
+            url: '/routes/airport'
+        }])
         response.render('pages/routes/routesairport', {
             routes: results.rows,
             page: 'routes'
@@ -110,6 +128,14 @@ router.get('/:route', (request, response) => {
             request.flash('warning', "Η γραμμή δεν υπάρχει");
             response.redirect('back')
         } else {
+            request.breadcrumbs([{
+                name: 'Δρομολόγια',
+                url: '/routes'
+            }, {
+                name: results.rows[0].rname + ', ' + results.rows[0].startpoint + ' - ' + results.rows[0].endpoint,
+                url: '/routes/' + rname
+            }])
+            console.log(results.rows)
             response.render('pages/routes/show', {
                 route: results.rows[0]
             })

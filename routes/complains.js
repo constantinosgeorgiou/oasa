@@ -7,6 +7,10 @@ const {
 } = require('../migrations/config')
 
 router.get('/', (request, response) => {
+    request.breadcrumbs({
+        name: 'Φόρμα Παραπόνων',
+        url: '/complains'
+    })
     response.render('pages/complains/complain')
 })
 
@@ -28,6 +32,10 @@ router.post('/', (request, response) => {
         complainBody: complainBody
     }
     console.log(complain)
+    request.breadcrumbs({
+        name: 'Καταχώρηση Παραπόνου',
+        url: '/complains'
+    })
     request.flash('success', 'Το παράπονο σας καταχωρήθικε')
     response.render('pages/complains/confirm', {
         complain: complain

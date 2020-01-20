@@ -12,6 +12,10 @@ const {
 // Root route - show profile
 router.get('/', (request, response) => {
     if (request.session.loggedin) {
+        request.breadcrumbs({
+            name: 'Προφίλ',
+            url: '/account'
+        })
         response.render('pages/users/index', {
             user: request.session.currentUser
         })
@@ -24,6 +28,13 @@ router.get('/', (request, response) => {
 // Edit route - edit profile
 router.get('/edit', (request, response) => {
     if (request.session.loggedin) {
+        request.breadcrumbs([{
+            name: 'Προφίλ',
+            url: '/account'
+        }, {
+            name: 'Επεξεργασία προφίλ',
+            url: '/account/edit'
+        }])
         response.render('pages/users/edit', {
             user: request.session.currentUser
         })
@@ -73,6 +84,13 @@ router.put('/edit', (request, response) => {
 // Edit route - change password
 router.get('/edit/pwd', (request, response) => {
     if (request.session.loggedin) {
+        request.breadcrumbs([{
+            name: 'Προφίλ',
+            url: '/account'
+        }, {
+            name: 'Επεξεργασία κωδικού πρόσβασης',
+            url: '/account/edit/pwd'
+        }])
         response.render('pages/users/password', {
             user: request.session.currentUser
         })

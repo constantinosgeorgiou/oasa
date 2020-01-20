@@ -1,11 +1,11 @@
 const express = require('express')
 const session = require('express-session')
-// var cookieParser = require('cookie-parser')
 const bodyParser = require("body-parser")
 const methodOverride = require("method-override")
 const path = require('path')
 const dotenv = require('dotenv')
 const flash = require('connect-flash')
+const breadcrumbs = require('express-breadcrumbs')
 const PORT = process.env.PORT || 5000
 const app = express()
 
@@ -29,14 +29,18 @@ app.use(bodyParser.urlencoded({
 
 
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(methodOverride("_method"));
+app.use(methodOverride("_method"))
+app.use(breadcrumbs.init())
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(flash())
-// app.use(cookieParser())
-// app.use(express.cookieSession({
-//     key: 'test'
-// }));
+
+// Set Breadcrumbs home information
+app.use(breadcrumbs.setHome({
+    name: 'Αρχική',
+    url: '/'
+}));
+
 app.use(session({
     secret: 'Santra! Pou en to koustoumi sou?',
     resave: false,
@@ -44,17 +48,16 @@ app.use(session({
     cookie: {
         maxAge: 60000
     }
-}));
-
+}))
 app.use((request, response, next) => {
     response.locals.loggedin = request.session.loggedin
     response.locals.currentUser = request.session.currentUser
     response.locals.warning = request.flash("warning")
     response.locals.danger = request.flash("danger")
     response.locals.success = request.flash("success")
-    next();
-});
-
+    response.locals.breadcrumbs = request.breadcrumbs()
+    next()
+})
 
 
 app.use("/", indexRoutes)

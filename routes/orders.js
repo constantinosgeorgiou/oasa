@@ -10,6 +10,10 @@ router.get('/', (request, response) => {
     if (!request.session.loggedin) {
         request.session.loggedin = false
     }
+    request.breadcrumbs({
+        name: 'Αγορά Εισητηρίων',
+        url: '/orders'
+    })
     response.render('pages/orders/ticket')
 })
 
@@ -30,6 +34,10 @@ router.post('/', (request, response) => {
         oevdomadiaio: evdomadiaio,
         total: totalCost
     }
+    request.breadcrumbs({
+        name: 'Καταχώρηση παραγγελίας',
+        url: '/orders'
+    })
     request.flash('success', 'Η παραγγελία καταχωρήθικε')
     response.render('pages/orders/confirm', {
         order: order
