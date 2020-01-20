@@ -1,3 +1,12 @@
+.jumbotron {
+	background: url(/bus40.jpg) center center / cover no-repeat;
+	height: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	/* background-size: 100% 100%; */
+}
 
 .form-background {
 	background-image: url("/buses-bg.jpg");

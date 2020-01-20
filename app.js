@@ -19,6 +19,7 @@ const userRoutes = require("./routes/users")
 const orderRoutes = require("./routes/orders")
 const routeRoutes = require("./routes/routes")
 const stopRoutes = require("./routes/stops")
+const complainRoutes = require("./routes/complains")
 
 
 app.use(bodyParser.json())
@@ -60,6 +61,7 @@ app.use("/", indexRoutes)
 app.use("/account", userRoutes)
 app.use("/orders", orderRoutes)
 app.use("/stops", stopRoutes)
+app.use("/complains", complainRoutes)
 app.use("/routes", routeRoutes)
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
