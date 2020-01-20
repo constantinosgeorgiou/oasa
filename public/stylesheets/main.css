@@ -29,7 +29,7 @@
 
 .outline {
 	outline-style: solid;
-	outline-color: lightgray;
+	outline-color: rgb(121, 121, 121);
 	outline-width: 1px;
 }
 
