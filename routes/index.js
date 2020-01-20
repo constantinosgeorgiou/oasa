@@ -129,7 +129,7 @@ router.post('/register', async (request, response) => {
     // Check if email address is already used
     pool.query(retrieve_query, [email], (error, result) => {
         if (result.rows[0]) {
-            request.flash('warning', "This email address is already registered.");
+            request.flash('warning', "Αυτό το email έχει ήδη χρησιμοποιηθεί");
             response.redirect('/register')
         } else {
             // Insert user into users table
@@ -154,9 +154,6 @@ router.get('/login', (request, response) => {
         name: 'Είσοδος',
         url: '/login'
     })
-    // response.render('pages/register', {
-    //     breadcrumbs: request.breadcrumbs()
-    // })
     response.render('pages/login')
 })
 
@@ -187,7 +184,7 @@ router.post('/login', (request, response) => {
                 response.redirect('/account')
             } else {
                 // incorrect email / password
-                request.flash('danger', "Oops. Incorrect login details.");
+                request.flash('danger', "Λάθος στοιχεία εισόδου");
                 response.redirect('/login')
 
             }
@@ -201,7 +198,7 @@ router.get("/logout", (request, response) => {
     delete request.session.currentUser
     delete response.locals.currentUser
     request.session.loggedin = false
-    request.flash('success', 'Logged you out!')
+    request.flash('success', 'Αποσύνδεση επιτυχής')
     response.redirect("/")
 });
 

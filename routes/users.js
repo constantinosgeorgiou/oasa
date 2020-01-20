@@ -20,7 +20,7 @@ router.get('/', (request, response) => {
             user: request.session.currentUser
         })
     } else {
-        request.flash('warning', 'You need to be logged in')
+        request.flash('warning', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
         response.redirect('/login')
     }
 })
@@ -39,7 +39,7 @@ router.get('/edit', (request, response) => {
             user: request.session.currentUser
         })
     } else {
-        request.flash('danger', 'Permission denied')
+        request.flash('danger', 'Απαγορεύεται η πρόσβαση')
         response.redirect('/login')
     }
 })
@@ -76,7 +76,7 @@ router.put('/edit', (request, response) => {
             })
         }
     } else {
-        request.flash('danger', 'Permission denied')
+        request.flash('danger', 'Απαγορεύεται η πρόσβαση')
         response.redirect('/login')
     }
 })
@@ -95,7 +95,7 @@ router.get('/edit/pwd', (request, response) => {
             user: request.session.currentUser
         })
     } else {
-        request.flash('danger', 'Permission denied')
+        request.flash('danger', 'Απαγορεύεται η πρόσβαση')
         response.redirect('/login')
     }
 })
@@ -125,7 +125,7 @@ router.put('/edit/pwd', (request, response) => {
             })
         }
     } else {
-        request.flash('danger', 'Permission denied')
+        request.flash('danger', 'Απαγορεύεται η πρόσβαση')
         response.redirect('/login')
     }
 })
@@ -142,11 +142,11 @@ router.delete('/', (request, response) => {
             delete request.session.currentUser
             delete response.locals.currentUser
             request.session.loggedin = false
-            request.flash('success', 'Deleted user')
+            request.flash('success', 'Επιτυχής διαγραφή χρήστη')
             response.redirect("/")
         })
     } else {
-        request.flash('danger', 'Permission denied')
+        request.flash('danger', 'Απαγορεύεται η πρόσβαση')
         response.redirect('/login')
     }
 })
