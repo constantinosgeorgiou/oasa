@@ -58,7 +58,7 @@ app.use((request, response, next) => {
 
 app.use("/", indexRoutes)
 app.use("/account", userRoutes)
-// app.use("/users/:id/orders", orderRoutes)
+app.use("/orders", orderRoutes)
 app.use("/stops", stopRoutes)
 app.use("/routes", routeRoutes)
 

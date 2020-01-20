@@ -85,3 +85,16 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $('input').keyup(function () { // run anytime the value changes
+        let eniaio = Number($('#eniaio').val());   // get value of field
+        let triimero = Number($('#triimero').val()); // convert it to a float
+        let evdomadiaio = Number($('#evdomadiaio').val());
+        const eniaioPrice = 1.40;
+        const triimeroPrice = 4.5;
+        const evdomadiaioPrice = 9;
+        $('#totalCost').html(eniaio * eniaioPrice + triimero * triimeroPrice + evdomadiaio * evdomadiaioPrice); // add them and output it
+        // document.getElementById('totalCost').value = eniaio * eniaioPrice + triimero * triimeroPrice + evdomadiaio * evdomadiaioPrice;
+
+    });
+</script>
