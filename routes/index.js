@@ -7,18 +7,20 @@ const {
     pool
 } = require('../migrations/config')
 
-router.get('/help', (request, response) => response.render('pages/help'))
-router.get('/accessibility', (request, response) => response.render('pages/accessibility'))
-router.get('/contact', (request, response) => response.render('pages/contact'))
-router.get('/ekdotiria', (request, response) => response.render('pages/ekdotiria'))
-router.get('/about', (request, response) => response.render('pages/about'))
-router.get('/telematics', (request, response) => response.render('pages/telematics'))
-router.get('/maps', (request, response) => response.render('pages/maps'))
-router.get('/nearby', (request, response) => response.render('pages/nearby'))
-router.get('/reducedfare', (request, response) => response.render('pages/reducedfare'))
-router.get('/news', (request, response) => response.render('pages/news'))
-router.get('/proexoxes', (request, response) => response.render('pages/proexoxes'))
-
+// Miscellaneous routes
+router.get('/history', (request, response) => response.render('pages/miscellaneous/history'))
+router.get('/business', (request, response) => response.render('pages/miscellaneous/business'))
+router.get('/prokirikseis', (request, response) => response.render('pages/miscellaneous/prokirikseis'))
+router.get('/help', (request, response) => response.render('pages/miscellaneous/help'))
+router.get('/accessibility', (request, response) => response.render('pages/miscellaneous/accessibility'))
+router.get('/contact', (request, response) => response.render('pages/miscellaneous/contact'))
+router.get('/ekdotiria', (request, response) => response.render('pages/miscellaneous/ekdotiria'))
+router.get('/about', (request, response) => response.render('pages/miscellaneous/about'))
+router.get('/telematics', (request, response) => response.render('pages/miscellaneous/telematics'))
+router.get('/maps', (request, response) => response.render('pages/miscellaneous/maps'))
+router.get('/nearby', (request, response) => response.render('pages/miscellaneous/nearby'))
+router.get('/reducedfare', (request, response) => response.render('pages/miscellaneous/reducedfare'))
+router.get('/news', (request, response) => response.render('pages/miscellaneous/news'))
 
 // Root route
 router.get('/', (request, response) => {
