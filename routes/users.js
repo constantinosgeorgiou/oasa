@@ -44,31 +44,68 @@ router.put('/edit', (request, response) => {
             email,
             password
         } = request.body
-        const checkPassword = 'SELECT * FROM users WHERE id = $1 AND password = $2'
         const updateData = 'UPDATE users SET firstName = $1, lastName = $2, telephone = $3, afm = $4, email = $5 WHERE id = $6'
-        pool.query(checkPassword, [request.session.currentUser.id, password], (error, result) => {
-            if (result.rowCount == 0) {
-                request.flash('danger', 'Ο κωδικός που δώσατε είναι λάθος')
-                response.redirect('/account/edit');
-            } else {
-                console.log('check => ', result.rows[0])
-                pool.query(updateData, [firstName, lastName, telephone, afm, email, result.rows[0].id], (error, result) => {
-                    if (error) {
-                        console.log(error)
-                        throw error
-                    }
-                    // request.session.currentUser.firstName = firstName
-                    // request.session.currentUser.lastName = lastName
-                    // request.session.currentUser.telephone = telephone
-                    // request.session.currentUser.afm = afm
-                    // request.session.currentUser.email = email
-                    console.log('result => ',result)
-                    request.flash('success', 'User updated.')
-                    response.redirect('/account');
-                })
-            }
+        if (password != request.session.currentUser.password) {
+            request.flash('danger', 'Ο κωδικός που δώσατε είναι λάθος')
+            response.redirect('/account/edit')
+        } else {
+            pool.query(updateData, [firstName, lastName, telephone, afm, email, request.session.currentUser.id], (error, result) => {
+                if (error) {
+                    console.log(error)
+                    throw error
+                }
+                request.session.currentUser.firstName = firstName
+                request.session.currentUser.lastName = lastName
+                request.session.currentUser.telephone = telephone
+                request.session.currentUser.afm = afm
+                request.session.currentUser.email = email
+                console.log('result => ', result)
+                request.flash('success', 'Ενημέρωση στοιχείων επιτυχής')
+                response.redirect('/account');
+            })
+        }
+    } else {
+        request.flash('danger', 'Permission denied')
+        response.redirect('/login')
+    }
+})
+
+// Edit route - change password
+router.get('/edit/pwd', (request, response) => {
+    if (request.session.loggedin) {
+        response.render('pages/users/password', {
+            user: request.session.currentUser
         })
-        response.redirect('/account')
+    } else {
+        request.flash('danger', 'Permission denied')
+        response.redirect('/login')
+    }
+})
+
+// Update - update password
+router.put('/edit/pwd', (request, response) => {
+    if (request.session.loggedin) {
+        const {
+            password,
+            newPassword,
+            newPasswordConfirm
+        } = request.body
+        const updateData = 'UPDATE users SET password = $1 WHERE id = $2'
+        if (password != request.session.currentUser.password) {
+            request.flash('danger', 'Ο κωδικός που δώσατε είναι λάθος')
+            response.redirect('back')
+        } else {
+            pool.query(updateData, [newPassword, request.session.currentUser.id], (error, result) => {
+                if (error) {
+                    console.log(error)
+                    throw error
+                }
+                request.session.currentUser.password = newPassword
+                console.log('UPDATE => ', result)
+                request.flash('success', 'Ενημέρωση στοιχείων επιτυχής')
+                response.redirect('/account');
+            })
+        }
     } else {
         request.flash('danger', 'Permission denied')
         response.redirect('/login')

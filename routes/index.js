@@ -88,11 +88,12 @@ router.post('/login', (request, response) => {
                 request.session.loggedin = true
                 let user = {
                     id: result.rows[0].id,
-                    firstName: result.rows[0].firstName,
-                    lastName: result.rows[0].lastName,
+                    firstName: result.rows[0].firstname,
+                    lastName: result.rows[0].lastname,
                     telephone: result.rows[0].telephone,
                     afm: result.rows[0].afm,
-                    email: result.rows[0].email
+                    email: result.rows[0].email,
+                    password: result.rows[0].password
                 }
                 request.session.currentUser = user
                 console.log("request.session.currentUser => ", request.session.currentUser)
