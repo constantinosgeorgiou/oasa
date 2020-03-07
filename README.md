@@ -1,39 +1,43 @@
-# node-js-getting-started
+# OASA website re-design
+![GitHub followers](https://img.shields.io/github/followers/constantinosgeorgiou?label=Follow&style=for-the-badge) 
+![AppVeyor](https://img.shields.io/appveyor/build/constantinosgeorgiou/oasa?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/constantinosgeorgiou/oasa?style=for-the-badge)
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+Athens Public Transport Organization (O.A.S.A. S.A.) is a public utility company. Its key mission is the strategic and operational planning, co-ordination and control of the public transport carried out by (ground and underground) public transport means in the Attica Region of Greece.
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+Part of coursework of my **Human - Computer Interaction** class at my university :mortar_board:
 
-## Running Locally
+**You can visit the website here: :earth_americas: https://oasa.herokuapp.com/** 
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
+##  :pencil: What we did:
+  1. [Heuristic evaluation](https://en.wikipedia.org/wiki/Heuristic_evaluation) of the site
+  2. [User requirement analysis](https://en.wikipedia.org/wiki/Requirements_analysis)
+  3. [Prototyping](https://oasa.herokuapp.com/)
 
-```sh
-$ git clone https://github.com/heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
+ You should be able to find both the heuristic evaluation and the user requiremnt analysis in the folder labeled **change later**
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+(insert gif showin it off and a couple screenshots)
 
-## Deploying to Heroku
+## :nut_and_bolt: Features
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-or
+-  :white_check_mark: Find information about a particular route
+-  :white_check_mark: Find information about a particular stop
+-  :white_check_mark: Create an account
+-  :white_check_mark: Edit account
+-  :white_check_mark: Order tickets online (for businesses)
+-  :white_large_square: Plan a route
+-  :white_large_square: Delete account
+-  :white_large_square: Top up your card/ticket
+-  :white_large_square: Submit complains
+-  :white_large_square: General search for website 
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+##  :rocket: Tech stack
+ - NodeJS
+ - ExpressJS
+ - EJS
+ - PostgresQL
 
-## Documentation
+## :scroll: License
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
 
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+The project is licensed under the GNU General Public License v3.0.
