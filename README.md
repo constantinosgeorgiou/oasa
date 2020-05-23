@@ -20,16 +20,16 @@ Part of coursework of my **Human - Computer Interaction** class at my university
 
 ## :nut_and_bolt: Features
 
--  :white_check_mark: Find information about a particular route
--  :white_check_mark: Find information about a particular stop
--  :white_check_mark: Create an account
--  :white_check_mark: Edit account
--  :white_check_mark: Order tickets online (for businesses)
--  :white_large_square: Plan a route
--  :white_large_square: Delete account
--  :white_large_square: Top up your card/ticket
--  :white_large_square: Submit complains
--  :white_large_square: General search for website 
+- [x] Find information about a particular route
+- [x] Find information about a particular stop
+- [x] Create an account
+- [x] Edit account
+- [x] Order tickets online (for businesses)
+- [ ] Plan a route
+- [ ] Delete account
+- [ ] Top up your card/ticket
+- [ ] Submit complains
+- [ ] General search for website 
 
 ##  :rocket: Tech stack
  - NodeJS
