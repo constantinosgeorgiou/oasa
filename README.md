@@ -25,17 +25,21 @@ Part of coursework of my **Human - Computer Interaction** class at my university
 - [x] Create an account
 - [x] Edit account
 - [x] Order tickets online (for businesses)
-- [ ] Plan a route
-- [ ] Delete account
-- [ ] Top up your card/ticket
-- [ ] Submit complains
-- [ ] General search for website 
 
 ##  :rocket: Tech stack
  - NodeJS
  - ExpressJS
  - EJS
  - PostgresQL
+
+## :clipboard: to - do:
+- [ ] Improve authentication
+- [ ] Impove ticket ordering
+- [ ] Delete account
+- [ ] Top up your card/ticket
+- [ ] Submit complains
+- [ ] General search for website 
+- [ ] Plan a route
 
 ## :scroll: License
 
